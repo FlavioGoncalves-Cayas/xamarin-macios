@@ -6156,6 +6156,37 @@ namespace Intents {
 		INStringResolutionResult Unsupported { get; }
 	}
 
+    [iOS (13, 0)]
+    [Mac (10, 12, 0, PlatformArchitecture.Arch64)]
+    [Watch (3, 2)]
+    [DisableDefaultCtor]
+    [BaseType (typeof (INIntentResolutionResult))]
+    interface INEnumResolutionResult {
+
+		[Static]
+		[Export("successWithResolvedValue:")]
+		INEnumResolutionResult GetSuccess (nint resolvedValue);
+
+		[Static]
+		[Export ("confirmationRequiredWithValueToConfirm:")]
+		INEnumResolutionResult GetConfirmationRequired ([NullAllowed] NSNumber valueToConfirm);
+
+		[New]
+		[Static]
+		[Export("needsValue")]
+		INEnumResolutionResult NeedsValue { get; }
+
+		[New]
+		[Static]
+		[Export("notRequired")]
+		INEnumResolutionResult NotRequired { get; }
+
+		[New]
+		[Static]
+		[Export("unsupported")]
+		INEnumResolutionResult Unsupported { get; }
+	}
+
 	[iOS (10, 0)]
 	[Watch (3, 2)]
 	[Unavailable (PlatformName.MacOSX)]
